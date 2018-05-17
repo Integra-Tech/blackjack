@@ -15,7 +15,7 @@ const cards = ['Ace',
 
 const suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
 
-const deck = [];
+let deck = [];
 let index = 0;
 
 function getOneMore() {
@@ -35,4 +35,11 @@ function showDeck(deck, index) {
     let buildHtml = document.getElementById('Deck');
     const element = '<li> ' + deck[index] + '</li>';
     buildHtml.innerHTML = buildHtml.innerHTML.concat(element);
+}
+
+function newGame() {
+    deck = [];
+    index = '';
+    let buildHtml = document.getElementById('Deck');
+    buildHtml.innerHTML = 'Your card\'s:';
 }
