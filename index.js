@@ -12,10 +12,10 @@ const cards = ['Ace',
     'Queen',
     'King'];
 
-const suits = ['Spades', 'Hearts', 'Diamonds', 'Pluk'];
+const suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
 
 const deck = [];
-let index;
+let index = 0;
 
 function getOneMore() {
     let card = cards[Math.floor(Math.random() * cards.length >> 1)];
