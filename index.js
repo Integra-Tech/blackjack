@@ -10,7 +10,8 @@ const cards = ['Ace',
     'ten',
     'Joker',
     'Queen',
-    'King'];
+    'King'
+];
 
 const suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
 
@@ -24,10 +25,10 @@ function getOneMore() {
 
     deck.push(sortedCard);
     console.log(deck, sortedCard);
-    showDeck(deck);
-
     //oh fuck undefined.... why why why 
-    index = deck.length-1;
+    index = deck.length - 1;
+    showDeck(deck, index);
+
 }
 
 function showDeck(deck, index) {
