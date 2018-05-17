@@ -25,7 +25,6 @@ function getOneMore() {
 
     deck.push(sortedCard);
     console.log(deck, sortedCard);
-    //oh fuck undefined.... why why why 
     index = deck.length - 1;
     showDeck(deck, index);
 
@@ -39,7 +38,6 @@ function showDeck(deck, index) {
 
 function newGame() {
     deck = [];
-    index = '';
     let buildHtml = document.getElementById('Deck');
     buildHtml.innerHTML = 'Your card\'s:';
 }
