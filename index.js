@@ -19,15 +19,22 @@ let deck = [];
 let index = 0;
 
 function getOneMore() {
-    let card = cards[Math.floor(Math.random() * cards.length >> 1)];
-    let suit = suits[Math.floor(Math.random() * suits.length >> 1)];
-    let sortedCard = card + ' of ' + suit;
+    let sortedCard = sortCard();
 
-    deck.push(sortedCard);
-    console.log(deck, sortedCard);
-    index = deck.length - 1;
-    showDeck(deck, index);
+    if (!deck.includes(sortedCard)) {
+        deck.push(sortedCard);
+        console.log(deck, sortedCard);
+        showDeck(deck, deck.length - 1);
+    } else {
+        getOneMore();
+    }
 
+    function sortCard() {
+        let card = cards[Math.floor(Math.random() * cards.length >> 1)];
+        let suit = suits[Math.floor(Math.random() * suits.length >> 1)];
+        let sortedCard = card + ' of ' + suit;
+        return sortedCard;
+    }
 }
 
 function showDeck(deck, index) {
