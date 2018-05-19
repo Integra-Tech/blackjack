@@ -46,12 +46,12 @@ function getOneMore(obj) {
         console.log(obj, sortedCard);
         showDeck(obj, obj.length - 1);
     } else {
-        getOneMore();
+        getOneMore(obj);
     }
 
     function sortCard() {
-        let card = cards[Math.floor(Math.random() * cards.length >> 1)].name;
-        let suit = suits[Math.floor(Math.random() * suits.length >> 1)];
+        let card = cards[Math.floor(Math.random() * cards.length )].name;
+        let suit = suits[Math.floor(Math.random() * suits.length )];
         let sortedCard = card + ' of ' + suit;
         return sortedCard;
     }
