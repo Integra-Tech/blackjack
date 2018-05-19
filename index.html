@@ -8,6 +8,41 @@
     <title>Black Jack</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="index.js"></script>
+    <style>
+        div#Deck{
+            display: block;
+            overflow:auto;
+        }
+        .black {
+            color: black;
+        }
+        .red {
+            color: red;
+        }
+        div#Deck>div{
+            display: inline-table;
+            border: 1px solid black;
+            width: 150px;
+            height: 234px;
+            margin: 10px;
+            border-radius: 6px;
+            box-shadow: 5px 5px 20px darkgray;
+        }
+
+        div.number {
+            display: block;
+            font-size: 30px;
+            padding-left: 10px;
+            font-weight: bold;
+        }
+
+        div.suit {
+            display: block;
+            font-size: 120px;
+            line-height: 190px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,7 +55,8 @@
         <button type="reset" class="btn btn-md btn-warning" onclick="newGame()">New Game</button>
     </div>
     <div class="container ">
-        <ul class="jumbotron " style="list-style-type:none;" id="Deck">Your card's:</ul>
+        <div class="jumbotron" id="Deck">Your card's:
+        </div>
     </div>
 
 </body>
