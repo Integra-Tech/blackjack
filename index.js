@@ -1,16 +1,16 @@
-const cards = [{ 1: 'Ace' },
-    { 2: 'Two' },
-    { 3: 'Three' },
-    { 4: 'Four' },
-    { 5: 'Five' },
-    { 6: 'Six' },
-    { 7: 'Seven' },
-    { 8: 'Eight' },
-    { 9: 'Nine' },
-    { 10: 'Ten' },
-    { 10: 'Joker' },
-    { 10: 'Queen' },
-    { 10: 'King' }
+const cards = [{ 'value': 1, 'name': 'Ace' },
+                {'value': 2,  'name': 'Two' },
+                {'value': 3,  'name': 'Three' },
+                {'value': 4,  'name': 'Four' },
+                {'value': 5,  'name': 'Five' },
+                {'value': 6,  'name': 'Six' },
+                {'value': 7,  'name': 'Seven' },
+                {'value': 8,  'name': 'Eight' },
+                {'value': 9,  'name': 'Nine' },
+                {'value': 10, 'name': 'Ten' },
+                {'value': 10, 'name': 'Joker' },
+                {'value': 10, 'name': 'Queen' },
+                {'value': 10, 'name': 'King' }
 ];
 
 const suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
@@ -50,7 +50,7 @@ function getOneMore(obj) {
     }
 
     function sortCard() {
-        let card = cards[Math.floor(Math.random() * cards.length >> 1)];
+        let card = cards[Math.floor(Math.random() * cards.length >> 1)].name;
         let suit = suits[Math.floor(Math.random() * suits.length >> 1)];
         let sortedCard = card + ' of ' + suit;
         return sortedCard;
