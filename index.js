@@ -1,76 +1,90 @@
-const cards = [{ 'value': 1, 'name': 'Ace' },
-    { 'value': 2, 'name': 'Two' },
-    { 'value': 3, 'name': 'Three' },
-    { 'value': 4, 'name': 'Four' },
-    { 'value': 5, 'name': 'Five' },
-    { 'value': 6, 'name': 'Six' },
-    { 'value': 7, 'name': 'Seven' },
-    { 'value': 8, 'name': 'Eight' },
-    { 'value': 9, 'name': 'Nine' },
-    { 'value': 10, 'name': 'Ten' },
-    { 'value': 10, 'name': 'Joker' },
-    { 'value': 10, 'name': 'Queen' },
-    { 'value': 10, 'name': 'King' }
+const cards = [
+    { 'value': 1, 'name': 'Ace', 'visual': 'A' },
+    { 'value': 2, 'name': 'Two', 'visual': '2' },
+    { 'value': 3, 'name': 'Three', 'visual': '3' },
+    { 'value': 4, 'name': 'Four', 'visual': '4' },
+    { 'value': 5, 'name': 'Five', 'visual': '5' },
+    { 'value': 6, 'name': 'Six', 'visual': '6' },
+    { 'value': 7, 'name': 'Seven', 'visual': '7' },
+    { 'value': 8, 'name': 'Eight', 'visual': '8' },
+    { 'value': 9, 'name': 'Nine', 'visual': '9' },
+    { 'value': 10, 'name': 'Ten', 'visual': '10' },
+    { 'value': 10, 'name': 'Joker', 'visual': 'J' },
+    { 'value': 10, 'name': 'Queen', 'visual': 'Q' },
+    { 'value': 10, 'name': 'King', 'visual': 'K' }
 ];
 
-const suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
+const suits = [
+    'Spades',
+    'Hearts',
+    'Diamonds',
+    'Clubs'
+];
 
 
-let deck = [];
+let playerDeck = [];
 let deckDealer = [];
-// let index = 0;
 
 function hit() {
-    getOneMore(deck, 'deck');
+    getOneMore(playerDeck);
 }
 
 function stand() {
     getOneMore(deckDealer, 'deckDealer');
 }
 
-let playerPoints = 0;
-
-function countCards() {
-    deck.array.forEach(element => {
-        if (element === 'Ace' & deck.includes('King' || 'Queen' || 'Joker')) {
-            playerPoints = 10
-        } else {
-            playerPoints += element.value;
-        }
-        console.log(playerPoints);
-    });
-}
-
-function getOneMore(obj, divId) {
+function getOneMore(obj) {
     let sortedCard = sortCard();
 
     if (!obj.includes(sortedCard)) {
         obj.push(sortedCard);
         console.log(obj, sortedCard);
-        showDeck(obj, obj.length - 1, divId);
+        showDeck(obj);
     } else {
-        getOneMore();
+        getOneMore(obj);
     }
 
     function sortCard() {
-        let card = cards[Math.floor(Math.random() * cards.length >> 1)].name;
-        let suit = suits[Math.floor(Math.random() * suits.length >> 1)];
-        let sortedCard = card + ' of ' + suit;
-        return sortedCard;
+        let card = cards[Math.floor(Math.random() * cards.length)];
+        return {
+            'name': card.visual,
+            'value': card.value,
+            'suit': suits[Math.floor(Math.random() * suits.length)]
+        }
     }
 }
 
-function showDeck(obj, index, divId) {
-    let buildHtml = document.getElementById(divId);
-    const element = '<li> ' + obj[index] + '</li>';
-    buildHtml.innerHTML = buildHtml.innerHTML.concat(element);
+function showDeck(obj) {
+    const suitClass = {
+        'Spades': { 'visual': '♠', 'class': 'black' },
+        'Hearts': { 'visual': '♥', 'class': 'red' },
+        'Diamonds': { 'visual': '♦', 'class': 'red' },
+        'Clubs': { 'visual': '♣', 'class': 'black' }
+    };
+    let buildHtml = document.getElementById('Deck');
+    buildHtml.innerHTML = '';
+
+    let count = 0;
+    obj.forEach(card => {
+        buildHtml.innerHTML += '<div class="' + suitClass[card.suit].class + '">' +
+            '<div class="number">' + card.name + '</div>' +
+            '<div class="suit">' + suitClass[card.suit].visual + '</div><div>';
+        count += (card.name !== 'A' ? card.value : (obj.includes('Q' || 'J' || 'K') ? 11 : 1))
+    });
+    document.getElementById('sum').innerHTML = count;
 }
 
 function newGame() {
-    deck = [];
+    playerDeck = [];
     deckDealer = [];
-    var buildHtml = document.getElementById('deck');
-    var htmlDealer = document.getElementById('deckDealer')
-    buildHtml.innerHTML = '';
-    htmlDealer.innerHTML = '';
+    let buildHtml = document.getElementById('Deck');
+    buildHtml.innerHTML = 'Your card\'s:';
+}
+
+function countPoints(obj, card) {
+    let AceValue = 1;
+    if (obj.includes('Q' || 'J' || 'K')) {
+        AceValue = 11;
+    }
+    return AceValue;
 }

@@ -7,9 +7,55 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Black Jack</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="index.js"></script>
+    <style>
+        div#Deck {
+            display: block;
+            overflow: auto;
+        }
+        
+        .black {
+            color: black;
+        }
+        
+        .red {
+            color: red;
+        }
+        
+        div#Deck>div {
+            display: inline-table;
+            border: 1px solid black;
+            width: 150px;
+            height: 234px;
+            margin: 10px;
+            border-radius: 6px;
+            box-shadow: 5px 5px 20px darkgray;
+        }
+        
+        div.number {
+            display: block;
+            font-size: 30px;
+            padding-left: 10px;
+            font-weight: bold;
+        }
+        
+        div.suit {
+            display: block;
+            font-size: 120px;
+            line-height: 190px;
+            text-align: center;
+        }
+        
+        div.sum {
+            text-align: right;
+            font-size: 20px;
+        }
+        
+        div.sum>span {
+            font-size: 100px;
+            color: #ccc;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,12 +67,9 @@
         <button type="button" class="btn btn-primary btn-success" onclick="stand()">Stand</button>
         <button type="reset" class="btn btn-md btn-warning" onclick="newGame()">New Game</button>
     </div>
-    <div class="container ">
-        <div class="deck">Your card's:
-            <ul class="jumbotron " style="list-style-type:none;" id="deck"></ul>
-        </div>
-        <div class="deckDealer">Dealer card's:
-            <ul class="jumbotron " style="list-style-type:none;" id="deckDealer"></ul>
+    <div class="container">
+        <div class="sum">Você fez <span id="sum">0</span> ponto(s)</div>
+        <div class="jumbotron" id="Deck">Your card's:
         </div>
     </div>
 
