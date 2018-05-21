@@ -80,6 +80,7 @@ function newGame() {
     count = 0;
     let buildHtml = document.getElementById('Deck');
     buildHtml.innerHTML = 'Your card\'s:';
+    document.getElementById('sum').innerHTML = count;
 }
 
 function countPoints(obj, card) {
