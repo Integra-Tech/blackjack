@@ -77,6 +77,7 @@ function showDeck(obj) {
 function newGame() {
     playerDeck = [];
     deckDealer = [];
+    count = 0;
     let buildHtml = document.getElementById('Deck');
     buildHtml.innerHTML = 'Your card\'s:';
 }
