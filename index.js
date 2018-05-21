@@ -22,11 +22,11 @@ const suits = [
 ];
 
 
-let deck = [];
+let playerDeck = [];
 let deckDealer = [];
 
 function hit() {
-    getOneMore(deck);
+    getOneMore(playerDeck);
 }
 
 function stand() {
@@ -45,8 +45,10 @@ function getOneMore(obj) {
     }
 
     function sortCard() {
+        let card = cards[Math.floor(Math.random() * cards.length )];
         return {
-            'name': cards[Math.floor(Math.random() * cards.length )].visual,
+            'name': card.visual,
+            'value': card.value,
             'suit': suits[Math.floor(Math.random() * suits.length )]  
         }
     }
@@ -62,16 +64,29 @@ function showDeck(obj) {
     let buildHtml = document.getElementById('Deck');
     buildHtml.innerHTML = '';
     
+    let count = 0;
     obj.forEach(card => {
         buildHtml.innerHTML += '<div class="' + suitClass[card.suit].class + '">'
         +'<div class="number">' + card.name + '</div>'
         +'<div class="suit">' + suitClass[card.suit].visual + '</div><div>';
+        count += (card.name !== 'A' ?  card.value : (obj.includes('Q' || 'J' || 'K') ? 11 : 1 )) 
     });
+    document.getElementById('sum').innerHTML = count;
 }
 
 function newGame() {
-    deck = [];
+    playerDeck = [];
     deckDealer = [];
     let buildHtml = document.getElementById('Deck');
     buildHtml.innerHTML = 'Your card\'s:';
 }
+
+function countPoints(obj, card) {
+    let AceValue = 1;
+       if (obj.includes('Q' || 'J' || 'K')){
+           AceValue = 11;
+       }
+       return AceValue;
+   }
+
+

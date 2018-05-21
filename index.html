@@ -42,6 +42,15 @@
             line-height: 190px;
             text-align: center;
         }
+
+        div.sum{
+            text-align: right;
+            font-size: 20px;
+        }
+        div.sum>span{
+            font-size: 100px;
+            color: #ccc;
+        }
     </style>
 </head>
 
@@ -54,7 +63,8 @@
         <button type="button" class="btn btn-primary btn-success" onclick="stand()">Stand</button>
         <button type="reset" class="btn btn-md btn-warning" onclick="newGame()">New Game</button>
     </div>
-    <div class="container ">
+    <div class="container">
+        <div class="sum">Você fez <span id="sum">0</span> ponto(s)</div>
         <div class="jumbotron" id="Deck">Your card's:
         </div>
     </div>
