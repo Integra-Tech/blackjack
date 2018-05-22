@@ -69,10 +69,19 @@ function showDeck(obj) {
         buildHtml.innerHTML += '<div class="' + suitClass[card.suit].class + '">' +
             '<div class="number">' + card.name + '</div>' +
             '<div class="suit">' + suitClass[card.suit].visual + '</div><div>';
-        count += (card.name !== 'A' ? card.value : (obj.includes('Q' || 'J' || 'K') ? 11 : 1))
+        count += (card.name !== 'A' ? card.value : countPoints(obj))
     });
     document.getElementById('sum').innerHTML = count;
 }
+
+function countPoints(obj) {
+    let AceValue = 1;
+    if (obj.some(card => obj.some(card => (card['name'] === 'J') || (card['name'] === 'Q') || (card['name'] === 'K')))) {
+        AceValue = 11;
+    }
+    return AceValue;
+}
+
 
 function newGame() {
     playerDeck = [];
@@ -81,12 +90,4 @@ function newGame() {
     let buildHtml = document.getElementById('Deck');
     buildHtml.innerHTML = 'Your card\'s:';
     document.getElementById('sum').innerHTML = count;
-}
-
-function countPoints(obj, card) {
-    let AceValue = 1;
-    if (obj.includes('Q' || 'J' || 'K')) {
-        AceValue = 11;
-    }
-    return AceValue;
 }
