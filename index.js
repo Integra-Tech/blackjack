@@ -62,6 +62,7 @@ function showDeck(obj) {
         'Clubs': { 'visual': '♣', 'class': 'black' }
     };
     let buildHtml = document.getElementById('Deck');
+    let disableHitHtml = document.getElementById('hit')
     buildHtml.innerHTML = '';
 
     let count = 0;
@@ -71,8 +72,15 @@ function showDeck(obj) {
             '<div class="suit">' + suitClass[card.suit].visual + '</div><div>';
         count += (card.name !== 'A' ? card.value : countPoints(obj))
     });
+    if (count > 21) {
+        disableHitHtml = '<button id="hit" disabled type="button" class="btn btn-primary btn-md" onclick="hit()">Hit!</button>'
+        count += ' ' + ' pontuação máxima atingida! '
+            // document.getElementById('sum').innerHTML = count;
+    }
     document.getElementById('sum').innerHTML = count;
-}
+
+};
+
 
 function countPoints(obj) {
     let AceValue = 1;
