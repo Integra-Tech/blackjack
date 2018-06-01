@@ -62,7 +62,7 @@ function showDeck(obj) {
         'Clubs': { 'visual': '♣', 'class': 'black' }
     };
     let buildHtml = document.getElementById('Deck');
-    let disableHitHtml = document.getElementById('hit')
+    let changeHitHtml = document.getElementById('hit')
     buildHtml.innerHTML = '';
 
     let count = 0;
@@ -73,9 +73,8 @@ function showDeck(obj) {
         count += (card.name !== 'A' ? card.value : countPoints(obj))
     });
     if (count > 21) {
-        disableHitHtml = '<button id="hit" disabled type="button" class="btn btn-primary btn-md" onclick="hit()">Hit!</button>'
-        count += ' ' + ' pontuação máxima atingida! '
-            // document.getElementById('sum').innerHTML = count;
+        changeHitHtml.outerHTML = '<button id="hit" disabled type="button" class="btn btn-primary btn-md" onclick="hit()">Hit!</button>'
+
     }
     document.getElementById('sum').innerHTML = count;
 
@@ -95,6 +94,8 @@ function newGame() {
     playerDeck = [];
     deckDealer = [];
     count = 0;
+    let changeHitHtml = document.getElementById('hit')
+    changeHitHtml.outerHTML = '<button id="hit" type="button" class="btn btn-primary btn-md" onclick="hit()">Hit!</button>'
     let buildHtml = document.getElementById('Deck');
     buildHtml.innerHTML = 'Your card\'s:';
     document.getElementById('sum').innerHTML = count;
