@@ -74,10 +74,9 @@ function showDeck(obj) {
     });
     if (count > 21) {
         changeHitHtml.outerHTML = '<button id="hit" disabled type="button" class="btn btn-primary btn-md" onclick="hit()">Hit!</button>'
-
+            // alert('pontuação maximá atingida! proximo jogador');
     }
     document.getElementById('sum').innerHTML = count;
-
 };
 
 

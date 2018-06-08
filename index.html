@@ -13,7 +13,6 @@
             display: block;
             overflow: auto;
         }
-
         
         .black {
             color: black;
@@ -23,7 +22,7 @@
             color: red;
         }
         
-        div#Deck>div {
+        div.Deck>div {
             display: inline-table;
             border: 1px solid black;
             width: 150px;
@@ -32,10 +31,20 @@
             border-radius: 6px;
             box-shadow: 5px 5px 20px darkgray;
         }
-
-        div.exceeds{
+        
+        div.exceeds {
             font-size: 100px;
             color: darkviolet;
+        }
+        
+        div.player1 {
+            float: left;
+            width: 70%;
+        }
+        
+        div.player2 {
+            float: right;
+            width: 70%;
         }
         
         div.number {
@@ -57,6 +66,11 @@
             font-size: 20px;
         }
         
+        div.sum-dealer {
+            text-align: left;
+            font-size: 20px;
+        }
+        
         div.sum>span {
             font-size: 100px;
             color: #ccc;
@@ -74,8 +88,15 @@
         <button type="reset" class="btn btn-md btn-warning" onclick="newGame()">New Game</button>
     </div>
     <div class="container">
-        <div class="sum">Você fez <span id="sum">0</span> ponto(s)</div>
-        <div class="jumbotron" id="Deck">Your card's:
+        <div id='player1' class="player1">
+            <div class="sum">Você fez <span id="sum">0</span> ponto(s)</div>
+            <div class="jumbotron Deck" id="Deck">Your card's:
+            </div>
+        </div>
+        <div class="player2">
+            <div class="sum sum-dealer">crupiê <span id="sum">0</span> ponto(s)</span>
+            </div>
+            <div class="jumbotron Deck" id="deckDealer">oujtra</div>
         </div>
     </div>
 
